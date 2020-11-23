@@ -9,6 +9,15 @@ export class PaymentsenseCodingChallengeApiService {
   constructor(private httpClient: HttpClient) {}
 
   public getHealth(): Observable<string> {
-    return this.httpClient.get('https://localhost:44341/health', { responseType: 'text' });
+    return this.httpClient.get('https://localhost:44370/health', { responseType: 'text' });
   }
+
+  public getCountries(): Observable<Country> {
+    return this.httpClient.get<Country>('https://localhost:44370/countries', { responseType: 'json' });
+  }
+}
+
+export interface Country {
+  name: string;
+  flag: string;
 }
